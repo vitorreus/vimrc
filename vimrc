@@ -1,3 +1,6 @@
+"
+source ~/.vim/import.vim
+
 set number
 
 if has("gui_running")
