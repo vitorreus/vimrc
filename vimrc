@@ -70,8 +70,21 @@ map <S-{> vi{
 map <S-(> vi(
 map <S-[> vi[
 
+"set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 
+set laststatus=2
 
+autocmd InsertEnter * set cursorline
+autocmd InsertLeave * set nocursorline
 
+" default the statusline to green when entering Vim
+hi statusline guibg=green
+hi StatusLine term=reverse ctermfg=0 ctermbg=2  gui=bold,reverse
+
+" now set it up to change the status line based on mode
+if version >= 700
+    au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
+    au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2  gui=bold,reverse
+endif
 
 
